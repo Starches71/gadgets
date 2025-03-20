@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gadget Hub</title>
+    
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        /* Header */
+        header {
+            background: #222;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Featured Section */
+        .featured {
+            text-align: center;
+            padding: 20px;
+        }
+        .featured img {
+            width: 200px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+        .product-grid div {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .product-grid img {
+            width: 100px;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Gadget Hub</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Trending</a>
+            <a href="#">Categories</a>
+            <a href="#">Contact</a>
+            <a href="#">Login</a>
+        </nav>
+    </header>
+
+    <!-- Featured Section -->
+    <section class="featured">
+        <h2>Featured Gadgets</h2>
+        <img src="gadget1.jpg" alt="Gadget 1">
+        <img src="gadget2.jpg" alt="Gadget 2">
+        <img src="gadget3.jpg" alt="Gadget 3">
+    </section>
+
+    <!-- Product Grid -->
+    <section class="product-grid">
+        <div>
+            <img src="product1.jpg" alt="Smartwatch">
+            <p>Smartwatch</p>
+        </div>
+        <div>
+            <img src="product2.jpg" alt="Wireless Earbuds">
+            <p>Wireless Earbuds</p>
+        </div>
+        <div>
+            <img src="product3.jpg" alt="Portable Speaker">
+            <p>Portable Speaker</p>
+        </div>
+        <div>
+            <img src="product4.jpg" alt="Gaming Mouse">
+            <p>Gaming Mouse</p>
+        </div>
+        <div>
+            <img src="product5.jpg" alt="VR Headset">
+            <p>VR Headset</p>
+        </div>
+        <div>
+            <img src="product6.jpg" alt="Smart Glasses">
+            <p>Smart Glasses</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Gadget Hub. All rights reserved.
+    </footer>
+
+</body>
+</html>
