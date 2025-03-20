@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Categories</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Top-Left Box */
+        .top-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%; /* Initially hidden */
+            height: 0%; /* Initially hidden */
+            background: rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease-in-out;
+            z-index: 1000; /* Ensure it appears above other content */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        /* Expanded state of the top-left box */
+        .top-left.expanded {
+            width: 25%; /* 25% of the screen width */
+            height: 25%; /* 25% of the screen height */
+        }
+
+        /* Discover Categories */
+        .discover-categories {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px; /* Space between boxes */
+            padding: 20px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Discover Category Box */
+        .discover-category-box {
+            width: 200px; /* Adjust for desired box size */
+            height: 120px; /* Adjust for desired height */
+            margin-right: 20px; /* Space between boxes */
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            background: #4682B4;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Text inside the box */
+        .discover-category-box .text {
+            font-size: 14px; /* Smaller text */
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .discover-category-box {
+                width: 150px; /* Smaller boxes for small screens */
+                height: 100px;
+            }
+
+            .top-left {
+                width: 50%; /* Take up half the screen */
+                height: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Left Box -->
+    <div class="top-left" id="topLeft">
+        Click me to expand
+    </div>
+
+    <!-- Discover Categories Section -->
+    <div class="discover-categories">
+        <div class="discover-category-box">
+            <div class="text">Category 1</div>
+        </div>
+        <div class="discover-category-box">
+            <div class="text">Category 2</div>
+        </div>
+        <div class="discover-category-box">
+            <div class="text">Category 3</div>
+        </div>
+        <div class="discover-category-box">
+            <div class="text">Category 4</div>
+        </div>
+        <div class="discover-category-box">
+            <div class="text">Category 5</div>
+        </div>
+        <div class="discover-category-box">
+            <div class="text">Category 6</div>
+        </div>
+        <div class="discover-category-box">
+            <div class="text">Category 7</div>
+        </div>
+    </div>
+
+    <!-- JavaScript to Handle Top-Left Expansion -->
+    <script>
+        document.getElementById('topLeft').addEventListener('click', function() {
+            this.classList.toggle('expanded');
+        });
+    </script>
+</body>
+</html>
