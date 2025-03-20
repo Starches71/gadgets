@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issa Page</title>
+    <style>
+        /* Default Light Theme */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            transition: 0.4s;
+        }
+
+        /* Dark Theme */
+        body.dark-mode {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+
+        /* Toggle Switch Styles */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 15px;
+        }
+
+        .slider::before {
+            content: "";
+            position: absolute;
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider::before {
+            transform: translateX(24px);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Issa Page</h1>
+    <p>Click the toggle to switch between Light and Dark mode.</p>
+
+    <!-- Toggle Switch -->
+    <label class="switch">
+        <input type="checkbox" id="themeToggle">
+        <span class="slider"></span>
+    </label>
+
+    <script>
+        const toggle = document.getElementById("themeToggle");
+        const body = document.body;
+
+        // Check if dark mode is saved in localStorage
+        if (localStorage.getItem("dark-mode") === "enabled") {
+            body.classList.add("dark-mode");
+            toggle.checked = true;
+        }
+
+        toggle.addEventListener("change", () => {
+            if (toggle.checked) {
+                body.classList.add("dark-mode");
+                localStorage.setItem("dark-mode", "enabled");
+            } else {
+                body.classList.remove("dark-mode");
+                localStorage.setItem("dark-mode", "disabled");
+            }
+        });
+    </script>
+
+</body>
+</html>
