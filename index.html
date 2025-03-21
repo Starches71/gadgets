@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gadget Haven</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* General Dark Theme */
+        body {
+            background-color: #0d1117;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 2rem;
+        }
+
+        /* Glassmorphism Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Neon Glow Button */
+        .btn-neon {
+            background: linear-gradient(90deg, #ff7a00, #ff34b3);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            text-transform: uppercase;
+        }
+
+        .btn-neon:hover {
+            box-shadow: 0px 0px 15px rgba(255, 100, 255, 0.7);
+            transform: scale(1.05);
+        }
+
+        /* Light Mode */
+        .light-mode {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Menu Button (3 dots) */
+        .menu-btn {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 3rem;
+            right: 1rem;
+            background-color: #1f2937;
+            border-radius: 10px;
+            padding: 1rem;
+            min-width: 150px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu a {
+            color: #fff;
+            display: block;
+            margin: 0.5rem 0;
+            text-decoration: none;
+        }
+
+        .menu a:hover {
+            background-color: #374151;
+        }
+
+        /* Horizontal Scroll Effect */
+        .category-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Top Navbar -->
+        <div class="flex justify-between items-center mb-6">
+            <!-- Menu Button -->
+            <div class="menu-btn" onclick="toggleMenu()">&#x22EE;</div>
+            <div class="menu" id="menu">
+                <a href="#">Smart Home</a>
+                <a href="#">Tech Gadgets</a>
+                <a href="#">Gardening Gadgets</a>
+                <a href="#">Kitchen Gadgets</a>
+                <a href="#">Automotive Automation</a>
+            </div>
+
+            <!-- Dark/Light Mode Toggle -->
+            <button class="btn-neon" onclick="toggleDarkLightMode()">Switch Mode</button>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="mb-10">
+            <div class="glass-card flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2">
+                    <h1 class="text-4xl font-extrabold mb-4">Discover the Future of Tech</h1>
+                    <p class="text-gray-300 mb-6">Get your hands on the latest and greatest gadgets, curated just for you.</p>
+                    <a href="#" class="btn-neon">Shop Now</a>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://via.placeholder.com/600x400" alt="Futuristic Gadget" class="w-full rounded-lg">
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories with Horizontal Sliding -->
+        <section class="mb-10">
+            <h2 class="text-3xl font-bold mb-6">Explore Categories</h2>
+            <div class="category-container">
+                <!-- Category 1 - Smart Home -->
+                <div class="glass-card">
+                    <h3 class="text-lg font-semibold">Smart Home</h3>
+                    <img src="https://via.placeholder.com/400x300" alt="Smart Home" class="w-full rounded-md">
+                    <p class="text-gray-300 mt-4">Explore the latest in smart home technology.</p>
+                    <a href="#" class="btn-neon mt-4 inline-block">View Details</a>
+                </div>
+
+                <!-- Category 2 - Tech Gadgets -->
+                <div class="glass-card">
+                    <h3 class="text-lg font-semibold">Tech Gadgets</h3>
+                    <img src="https://via.placeholder.com/400x300" alt="Tech Gadgets" class="w-full rounded-md">
+                    <p class="text-gray-300 mt-4">Cutting-edge technology for every enthusiast.</p>
+                    <a href="#" class="btn-neon mt-4 inline-block">View Details</a>
+                </div>
+
+                <!-- Category 3 - Gardening Gadgets -->
+                <div class="glass-card">
+                    <h3 class="text-lg font-semibold">Gardening Gadgets</h3>
+                    <img src="https://via.placeholder.com/400x300" alt="Gardening Gadgets" class="w-full rounded-md">
+                    <p class="text-gray-300 mt-4">Perfect tools for the green-thumbed gadget lover.</p>
+                    <a href="#" class="btn-neon mt-4 inline-block">View Details</a>
+                </div>
+
+                <!-- Category 4 - Kitchen Gadgets -->
+                <div class="glass-card">
+                    <h3 class="text-lg font-semibold">Kitchen Gadgets</h3>
+                    <img src="https://via.placeholder.com/400x300" alt="Kitchen Gadgets" class="w-full rounded-md">
+                    <p class="text-gray-300 mt-4">Make your kitchen smarter with the latest gadgets.</p>
+                    <a href="#" class="btn-neon mt-4 inline-block">View Details</a>
+                </div>
+
+                <!-- Category 5 - Automotive Automation -->
+                <div class="glass-card">
+                    <h3 class="text-lg font-semibold">Automotive Automation</h3>
+                    <img src="https://via.placeholder.com/400x300" alt="Automotive Automation" class="w-full rounded-md">
+                    <p class="text-gray-300 mt-4">Enhance your vehicle with automation tech.</p>
+                    <a href="#" class="btn-neon mt-4 inline-block">View Details</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Toggle the visibility of the menu
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Toggle Dark/Light Mode
+        function toggleDarkLightMode() {
+            const body = document.body;
+            body.classList.toggle('light-mode');
+        }
+    </script>
+</body>
+</html>
