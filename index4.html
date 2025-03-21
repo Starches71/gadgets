@@ -58,32 +58,63 @@
 
         /* Menu Button (3 dots) */
         .menu-btn {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
+            background: none;
+            border: none;
             color: white;
+            padding: 10px;
         }
 
+        /* Menu Styles */
         .menu {
             display: none;
             position: absolute;
-            top: 3rem;
-            left: 1rem;
+            top: 50px;
+            left: 20px;
             background-color: #1f2937;
             border-radius: 10px;
-            padding: 1rem;
+            padding: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            min-width: 150px;
         }
 
         .menu a {
-            color: #fff;
+            color: white;
             display: block;
-            margin: 0.5rem 0;
             text-decoration: none;
+            padding: 8px;
+            border-radius: 5px;
         }
 
         .menu a:hover {
             background-color: #374151;
         }
+    </style>
+</head>
+<body>
 
+    <!-- Menu Button (3 dots) -->
+    <button class="menu-btn" onclick="toggleMenu()">&#x22EE;</button>
+
+    <!-- Dropdown Menu -->
+    <div class="menu" id="menu">
+        <a href="#">Tech Gadgets</a>
+        <a href="#">Smart Home</a>
+        <a href="#">Kitchen Gadgets</a>
+        <a href="#">Fitness Tech</a>
+        <a href="#">Gaming Accessories</a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
+
+</body>
+</html>
         /* Horizontal Scroll Effect */
         .category-container {
             display: flex;
