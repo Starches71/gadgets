@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitGadgets</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Dark and Light Mode */
+        .light-mode {
+            background-color: #ffffff;
+            color: black;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: #1f2937;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        /* Menu Button */
+        .menu-btn {
+            font-size: 1.8rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            padding: 10px;
+        }
+
+        /* Dropdown Menu */
+        .menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            background-color: #1f2937;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            min-width: 150px;
+        }
+
+        .menu a {
+            color: white;
+            display: block;
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .menu a:hover {
+            background-color: #374151;
+        }
+
+        /* Theme Switch */
+        .theme-switch {
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            position: relative;
+            padding: 50px 20px;
+        }
+
+        .hero img {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 20px;
+            opacity: 0.7;
+        }
+
+        .hero h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5rem;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 15px;
+        }
+
+        /* Sections */
+        .sections {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .section {
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 20px;
+            background: #1f2937;
+            border-radius: 20px;
+        }
+
+        .section h2 {
+            margin-bottom: 15px;
+        }
+
+        .items {
+            display: inline-flex;
+            gap: 15px;
+        }
+
+        .item {
+            min-width: 200px;
+            padding: 15px;
+            background: #374151;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .item:hover {
+            transform: scale(1.1);
+        }
+
+        .item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <!-- Menu Button -->
+        <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
+
+        <!-- Theme Switch -->
+        <span class="theme-switch" onclick="toggleTheme()">🌙</span>
+    </div>
+
+    <!-- Dropdown Menu -->
+    <div class="menu" id="menu">
+        <a href="#">Tech Gadgets</a>
+        <a href="#">Smart Home</a>
+        <a href="#">Gaming Accessories</a>
+        <a href="#">Wearable Tech</a>
+        <a href="#">Laptop Reviews</a>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <img src="https://via.placeholder.com/1200x250" alt="GitGadgets Banner">
+        <h1>GitGadgets</h1>
+    </div>
+
+    <!-- Sections -->
+    <div class="sections">
+        
+        <!-- Section 1 -->
+        <div class="section">
+            <h2>Latest Tech Reviews</h2>
+            <div class="items">
+                <div class="item" onclick="openArticle()">
+                    <img src="https://via.placeholder.com/200" alt="Product">
+                    <p>Smartphone Review</p>
+                </div>
+                <div class="item" onclick="openArticle()">
+                    <img src="https://via.placeholder.com/200" alt="Product">
+                    <p>Gaming Laptop</p>
+                </div>
+                <div class="item" onclick="openArticle()">
+                    <img src="https://via.placeholder.com/200" alt="Product">
+                    <p>Wireless Headphones</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="section">
+            <h2>Popular Products</h2>
+            <div class="items">
+                <div class="item" onclick="openArticle()">
+                    <img src="https://via.placeholder.com/200" alt="Product">
+                    <p>Smartwatch</p>
+                </div>
+                <div class="item" onclick="openArticle()">
+                    <img src="https://via.placeholder.com/200" alt="Product">
+                    <p>Bluetooth Speaker</p>
+                </div>
+                <div class="item" onclick="openArticle()">
+                    <img src="https://via.placeholder.com/200" alt="Product">
+                    <p>VR Headset</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Toggle Menu
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // Toggle Theme
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const themeSwitch = document.querySelector('.theme-switch');
+            themeSwitch.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+        }
+
+        // Open Article/Product Review
+        function openArticle() {
+            alert("Opening Article/Product Review...");
+        }
+    </script>
+
+</body>
+</html>
