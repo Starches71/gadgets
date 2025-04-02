@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,10 +51,18 @@
         }
 
         .gradient-background {
-            background: linear-gradient(45deg, #ff6347, #4682b4); /* Red and Blue Gradient */
-            padding: 10px;
-            border-radius: 5px;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://img.us.news.samsung.com/us/wp-content/uploads/2025/01/22132755/%EA%B0%A4%EB%9F%AD%EC%8B%9C_S25_%EC%8B%9C%EB%A6%AC%EC%A6%88.jpg');
+            background-size: cover;
             color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .gradient-background .fact {
+            font-size: 28px;
+            color: #FFD700; /* Gold Text */
         }
 
     </style>
@@ -66,7 +75,7 @@
         
         <!-- Content Section -->
         <div class="content">
-            <div class="fact gradient-background">
+            <div class="fact">
                 Did You Know?
             </div>
             <div class="description">
@@ -74,6 +83,11 @@
                 <br><br>
                 With this advanced technology, you can record stunningly clear videos, and take incredibly detailed photos with ease. The future of mobile photography is here!
             </div>
+        </div>
+
+        <!-- Gradient Effect at the Bottom -->
+        <div class="gradient-background">
+            <div class="fact">The Future of Mobile Tech!</div>
         </div>
     </div>
 
