@@ -1,1 +1,27 @@
+name: Convert HTML to Image
 
+on:  
+  push:
+    branches:
+      - main  # Runs when you push to main (change if needed)
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  convert_html_to_image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install wkhtmltoimage
+        run: sudo apt update && sudo apt install wkhtmltopdf -y
+
+      - name: Convert HTML to Image
+        run: wkhtmltoimage index.html output.png
+
+      - name: Upload Image as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: html-image
+          path: output.png
