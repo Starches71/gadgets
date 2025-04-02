@@ -1,48 +1,53 @@
+
 <!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Did You Know?</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #222;
-            margin: 0;
-            flex-direction: column;
-        }
-        .container {
-            position: relative;
-            text-align: center;
-            color: white;
-            max-width: 600px;
-        }
-        .image {
-            width: 100%;
-            display: block;
-        }
-        .overlay {
-            position: relative;
-            width: 100%;
-            padding: 30px;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1));
-            color: white;
-            text-align: center;
-        }
-        .heading {
-            font-size: 24px;
-            font-weight: bold;
-            color: white; /* Whitened text */
-            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
-            margin-bottom: 10px;
-        }
-        .subtext {
-            font-size: 18px;
-            color: white; /* Whitened text */
-        }
-    </style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #222;
+        margin: 0;
+        flex-direction: column;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .container {
+        position: relative;
+        text-align: center;
+        color: white;
+        max-width: 600px;
+    }
+    .image {
+        width: 100%;
+        display: block;
+    }
+    .overlay {
+        position: relative;
+        width: 100%;
+        padding: 40px;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1));
+        color: white;
+        text-align: center;
+    }
+    .heading {
+        font-size: 28px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+        margin-bottom: 10px;
+    }
+    .subtext {
+        font-size: 22px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+    }
+</style>
+
 </head>
 <body>
     <div class="container">
