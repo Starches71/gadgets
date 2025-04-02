@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +17,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: auto; /* Allows zooming & scrolling */
+            overflow: auto;
         }
         .container {
             position: relative;
@@ -26,11 +25,17 @@
             max-width: 600px;
             overflow: hidden;
         }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         .image-container img {
             width: 100%;
             height: auto;
             max-height: 100vh;
             display: block;
+            object-fit: contain; /* Ensures the full image fits */
         }
         .gradient-overlay {
             position: absolute;
