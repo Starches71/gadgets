@@ -1,67 +1,80 @@
 
-<!DOCTYPE html><html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samsung S25 Feature</title>
+    <title>Samsung S25 Fact</title>
     <style>
         body {
-            background-color: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #111;
+            color: white;
+            text-align: center;
         }
         .container {
-            position: relative;
-            width: 90vw;
-            max-width: 400px;
-            background: black;
-            border-radius: 15px;
+            max-width: 600px;
+            margin: 40px auto;
             overflow: hidden;
-            text-align: center;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            position: relative;
         }
         .image-container {
             position: relative;
-            width: 100%;
+            border-radius: 15px 15px 0 0;
+            overflow: hidden;
         }
         .image-container img {
             width: 100%;
             display: block;
+            opacity: 0.9;
         }
-        .gradient {
+        .gradient-overlay {
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 40%;
-            background: linear-gradient(to top, black, transparent);
+            height: 180px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.85) 25%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0) 100%);
         }
-        .text-box {
-            padding: 20px;
-            color: white;
-            font-family: Arial, sans-serif;
+        .text-container {
+            background: linear-gradient(to top, rgba(0,0,0,0.98), rgba(0,0,0,0));
+            padding: 30px;
+            border-radius: 0 0 15px 15px;
+            margin-top: -70px;
+            position: relative;
         }
-        .button {
-            background-color: orange;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: bold;
+        .title-box {
             display: inline-block;
-            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ff8c00, #ff4500);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 900;
+            font-size: 22px;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 40px; /* Moved further down to align where the image and text meet */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .fact-text {
+            margin-top: 80px;
+            font-size: 20px;
+            line-height: 1.6;
+            font-weight: 900;
+            text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.3);
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="image-container">
-            <img src="samsung-s25.jpg" alt="Samsung S25">
-            <div class="gradient"></div>
+            <img src="https://image-us.samsung.com/us/smartphones/galaxy-s25/Gallery/PA1/PA1-01-Navy-1600x1200.jpg" alt="Samsung S25">
+            <div class="gradient-overlay"></div>
         </div>
-        <div class="text-box">
-            <div class="button">Did you know?</div>
-            <p>Samsung S25 is the first phone that when it scratches, it fixes itself without mechanics.</p>
+        <div class="text-container">
+            <div class="title-box">Did you know?</div>
+            <p class="fact-text">Samsung S25 is the first phone that when it scratches, it fixes itself without mechanics.</p>
         </div>
     </div>
 </body>
