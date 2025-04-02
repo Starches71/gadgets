@@ -21,7 +21,7 @@ jobs:
         run: wkhtmltoimage index.html output.png
 
       - name: Upload Image as Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # Updated to v4
         with:
           name: html-image
           path: output.png
