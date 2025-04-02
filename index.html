@@ -7,64 +7,56 @@
     <title>Did You Know?</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
-        
+
         .container {
             max-width: 600px;
             margin: 20px auto;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         .image {
             width: 100%;
-            height: 300px;
+            height: 300px; /* You can adjust the height depending on your image size */
             background-image: url('https://img.us.news.samsung.com/us/wp-content/uploads/2025/01/22132755/%EA%B0%A4%EB%9F%AD%EC%8B%9C_S25_%EC%8B%9C%EB%A6%AC%EC%A6%88.jpg');
             background-size: cover;
             background-position: center;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
+            border-radius: 8px;
+        }
+
+        .gradient-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%; /* Controls how much space the gradient takes */
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%); /* Gradient turns darker as it goes down */
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
         }
 
         .content {
-            padding: 20px;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            color: white;
+            text-align: center;
         }
 
         .fact {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
-            color: #333;
-            text-align: center;
-            margin: 20px 0;
+            color: #FFD700; /* Gold Text */
         }
 
         .description {
             font-size: 18px;
-            color: #555;
             line-height: 1.6;
-            text-align: center;
         }
-
-        .gradient-background {
-            background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://img.us.news.samsung.com/us/wp-content/uploads/2025/01/22132755/%EA%B0%A4%EB%9F%AD%EC%8B%9C_S25_%EC%8B%9C%EB%A6%AC%EC%A6%88.jpg');
-            background-size: cover;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-
-        .gradient-background .fact {
-            font-size: 28px;
-            color: #FFD700; /* Gold Text */
-        }
-
     </style>
 </head>
 <body>
@@ -72,8 +64,10 @@
     <div class="container">
         <!-- Image Section -->
         <div class="image"></div>
-        
-        <!-- Content Section -->
+
+        <!-- Gradient Overlay and Text Section -->
+        <div class="gradient-overlay"></div>
+
         <div class="content">
             <div class="fact">
                 Did You Know?
@@ -81,13 +75,8 @@
             <div class="description">
                 Here's a cool fact about the Samsung Galaxy S25! Did you know that the Galaxy S25 series comes with a revolutionary new camera that can capture ultra-high-definition photos and videos in 8K resolution? 
                 <br><br>
-                With this advanced technology, you can record stunningly clear videos, and take incredibly detailed photos with ease. The future of mobile photography is here!
+                With this advanced technology, you can record stunningly clear videos and take incredibly detailed photos with ease. The future of mobile photography is here!
             </div>
-        </div>
-
-        <!-- Gradient Effect at the Bottom -->
-        <div class="gradient-background">
-            <div class="fact">The Future of Mobile Tech!</div>
         </div>
     </div>
 
