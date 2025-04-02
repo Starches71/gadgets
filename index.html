@@ -1,32 +1,35 @@
-
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samsung S25 Fact</title>
     <style>
         body {
             margin: 0;
+            padding: 0;
             font-family: 'Poppins', sans-serif;
             background-color: #111;
             color: white;
-            text-align: center;
+            height: 100vh;
+            overflow: hidden; /* Prevents extra scroll space */
         }
         .container {
-            max-width: 600px;
-            margin: 40px auto;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
             position: relative;
+            width: 100%;
+            height: 100%;
         }
         .image-container {
-            position: relative;
-            border-radius: 15px 15px 0 0;
-            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
         .image-container img {
             width: 100%;
-            display: block;
+            height: 100%;
+            object-fit: cover; /* Makes sure the image covers the entire screen */
             opacity: 0.9;
         }
         .gradient-overlay {
@@ -37,11 +40,11 @@
             background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.85) 25%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0) 100%);
         }
         .text-container {
-            background: linear-gradient(to top, rgba(0,0,0,0.98), rgba(0,0,0,0));
-            padding: 30px;
-            border-radius: 0 0 15px 15px;
-            margin-top: -70px;
-            position: relative;
+            position: absolute;
+            bottom: 100px; /* Adjust this to position the text */
+            width: 100%;
+            text-align: center;
+            padding: 0 20px;
         }
         .title-box {
             display: inline-block;
@@ -52,13 +55,9 @@
             font-size: 22px;
             color: white;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-            position: absolute;
-            top: 40px; /* Moved further down to align where the image and text meet */
-            left: 50%;
-            transform: translateX(-50%);
         }
         .fact-text {
-            margin-top: 80px;
+            margin-top: 20px;
             font-size: 20px;
             line-height: 1.6;
             font-weight: 900;
