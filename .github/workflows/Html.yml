@@ -1,29 +1,36 @@
 name: Convert HTML to Mobile Image
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  convert-html-to-mobile-image:
+  convert-html-to-image:
     runs-on: ubuntu-latest
+
     steps:
+      # Checkout the repository
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Install Dependencies
+      # Install wkhtmltoimage dependencies
+      - name: Install wkhtmltoimage
         run: |
           sudo apt update
-          sudo apt install -y wkhtmltopdf imagemagick  # Install both
+          sudo apt install wkhtmltopdf -y
 
+      # Convert HTML to Mobile Image (using mobile viewport)
       - name: Convert HTML to Mobile Image
         run: |
-          wkhtmltoimage --viewport-size 375x667 --width 375 --height 667 --zoom 1.5 index.html full_output.png
-          
-      - name: Crop Mobile Image
-        run: convert full_output.png -crop 375x600+0+50 cropped_output.png  
-        # Crops 375x600 from (x=0, y=50) to remove unnecessary parts
+          wkhtmltoimage --width 375 --height 667 --disable-smart-width --zoom 1.5 --javascript-delay 1000 index.html full_output.png
 
-      - name: Upload Cropped Image
+      # Upload the resulting image as an artifact
+      - name: Upload Image as Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: html-mobile-image
-          path: cropped_output.png
+          name: html-image
+          path: full_output.png
