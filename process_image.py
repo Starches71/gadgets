@@ -1,37 +1,54 @@
-from PIL import Image, ImageDraw, ImageFont
+
 import requests
 from io import BytesIO
+from PIL import Image, ImageDraw, ImageFont
 
-# Load image from URL
-url = "https://image-us.samsung.com/us/smartphones/galaxy-s25/Gallery/PA1/PA1-01-Navy-1600x1200.jpg"
-response = requests.get(url)
-image = Image.open(BytesIO(response.content))
+# Image URL
+image_url = "https://image-us.samsung.com/us/smartphones/galaxy-s25/Gallery/PA1/PA1-01-Navy-1600x1200.jpg"
 
-# Convert to RGBA to handle transparency
-image = image.convert("RGBA")
+# Download image
+response = requests.get(image_url)
+image = Image.open(BytesIO(response.content)).convert("RGB")
 
-# Create gradient overlay
+# Image size
 width, height = image.size
-gradient_height = int(height * 0.4)
-overlay = Image.new("RGBA", image.size, (0, 0, 0, 0))
-gradient = Image.new("RGBA", (width, gradient_height), (0, 0, 0, 200))
 
-# Apply gradient at the bottom
-overlay.paste(gradient, (0, height - gradient_height, width, height))
-image = Image.alpha_composite(image, overlay)
+# Create gradient overlay (black fading to transparent)
+gradient = Image.new("L", (width, 200), color=0)
+for y in range(200):
+    gradient.putpixel((0, y), int((y / 200) * 255))
+
+# Expand gradient across the image width
+gradient = gradient.resize((width, 200))
+
+# Convert to RGBA and paste on image
+gradient_layer = Image.new("RGBA", (width, height))
+gradient_layer.paste((0, 0, 0, 200), (0, height - 200))  # Dark bottom
+
+# Merge gradient with image
+image = image.convert("RGBA")
+image = Image.alpha_composite(image, gradient_layer)
 
 # Load font
-font = ImageFont.truetype("DejaVuSans-Bold.ttf", 40)
+font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"  # Adjust if needed
+font = ImageFont.truetype(font_path, 50)
 
-# Add text
+# Draw text
 draw = ImageDraw.Draw(image)
-text = "Samsung Galaxy S25 - Stunning Navy Blue!"
-bbox = draw.textbbox((0, 0), text, font=font)
-text_w, text_h = bbox[2] - bbox[0], bbox[3] - bbox[1]
-text_x = (width - text_w) // 2
-text_y = height - text_h - 20
+text = "Samsung Galaxy S25"
+text_w, text_h = draw.textbbox((0, 0), text, font=font)[2:]
 
-draw.text((text_x, text_y), text, font=font, fill="white")
+# Position text at the bottom center
+x = (width - text_w) // 2
+y = height - 150
 
-# Save result
+# Add text with white color
+draw.text((x, y), text, font=font, fill="white")
+
+# Convert RGBA to RGB (JPEG doesn't support RGBA)
+image = image.convert("RGB")
+
+# Save final image
 image.save("processed.jpg")
+
+print("Image processing completed: saved as 'processed.jpg'")
