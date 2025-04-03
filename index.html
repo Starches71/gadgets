@@ -6,34 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samsung S25 Fact</title>
     <style>
+        /* General mobile optimization */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
             background-color: #111;
             color: white;
-            height: 100dvh;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
+
         .container {
             position: relative;
-            width: 90vw; /* Adjusted width */
-            max-width: 400px; /* Prevents image from getting too big */
+            width: 90vw; /* Ensures the container is not too wide */
+            max-width: 400px; /* Ensures the container does not grow too large */
             text-align: center;
+            overflow: hidden; /* Prevents the content from spilling over */
         }
+
         .image-container {
             position: relative;
             width: 100%;
             height: auto;
         }
+
         .image-container img {
             width: 100%;
             height: auto;
-            max-height: 250px; /* Limits the image height */
+            max-height: 250px; /* Limits the image height for mobile */
             object-fit: contain;
         }
+
         .gradient-overlay {
             position: absolute;
             bottom: 0;
@@ -41,22 +48,44 @@
             height: 50px;
             background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0) 100%);
         }
+
         .text-container {
             margin-top: 10px;
+            padding: 0 10px; /* Adds some padding for smaller screens */
         }
+
         .title-box {
             display: inline-block;
             background: linear-gradient(135deg, #ff8c00, #ff4500);
             padding: 10px 20px;
             border-radius: 20px;
             font-weight: 900;
-            font-size: 20px;
+            font-size: 18px; /* Reduced font size for better mobile readability */
             color: white;
+            word-wrap: break-word;
         }
+
         .fact-text {
             margin-top: 10px;
-            font-size: 16px;
-            font-weight: 900;
+            font-size: 14px; /* Adjusted font size for mobile view */
+            font-weight: 700;
+            line-height: 1.4; /* Improves line spacing for readability */
+        }
+
+        /* Ensure that the image scales correctly in smaller screen widths */
+        @media only screen and (max-width: 600px) {
+            .title-box {
+                font-size: 16px; /* Smaller title font size on smaller screens */
+                padding: 8px 16px;
+            }
+
+            .fact-text {
+                font-size: 12px; /* Smaller font size for the fact text on smaller screens */
+            }
+
+            .container {
+                width: 95vw; /* Allows for some breathing room on very small screens */
+            }
         }
     </style>
 </head>
