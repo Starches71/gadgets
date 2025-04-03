@@ -1,27 +1,29 @@
-name: Convert HTML to Image
+name: Convert HTML to Mobile Image
 
-on:  
-  push:
-    branches:
-      - main  # Runs when you push to main (change if needed)
-  workflow_dispatch:  # Allows manual trigger
+on: [push]
 
 jobs:
-  convert_html_to_image:
+  convert-html-to-mobile-image:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Install wkhtmltoimage
-        run: sudo apt update && sudo apt install wkhtmltopdf -y
+      - name: Install Dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y wkhtmltopdf imagemagick  # Install both
 
-      - name: Convert HTML to Image
-        run: wkhtmltoimage index.html output.png
+      - name: Convert HTML to Mobile Image
+        run: |
+          wkhtmltoimage --viewport-size 375x667 --width 375 --height 667 --zoom 1.5 index.html full_output.png
+          
+      - name: Crop Mobile Image
+        run: convert full_output.png -crop 375x600+0+50 cropped_output.png  
+        # Crops 375x600 from (x=0, y=50) to remove unnecessary parts
 
-      - name: Upload Image as Artifact
-        uses: actions/upload-artifact@v4  # Updated to v4
+      - name: Upload Cropped Image
+        uses: actions/upload-artifact@v4
         with:
-          name: html-image
-          path: output.png
+          name: html-mobile-image
+          path: cropped_output.png
