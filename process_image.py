@@ -1,43 +1,40 @@
 
-import cv2
-import numpy as np
 from PIL import Image, ImageDraw, ImageFont
+import requests
+from io import BytesIO
 
-# Load the image
-image = cv2.imread("original.jpg")
-image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Convert to RGB
+# Load image from URL
+url = "https://image-us.samsung.com/us/smartphones/galaxy-s25/Gallery/PA1/PA1-01-Navy-1600x1200.jpg"
+response = requests.get(url)
+image = Image.open(BytesIO(response.content))
 
-# Get image dimensions
-h, w, _ = image.shape
+# Convert to RGBA to handle transparency
+image = image.convert("RGBA")
 
-# Create gradient overlay (Black to Transparent)
-gradient = np.zeros((h, w, 3), dtype=np.uint8)
-for i in range(int(h * 0.4), h):  # Apply gradient to the bottom 40%
-    alpha = (i - h * 0.4) / (h * 0.6)
-    gradient[i, :, :] = (0, 0, 0)  # Black
-    gradient[i, :, :] = gradient[i, :, :] * alpha
+# Create gradient overlay
+width, height = image.size
+gradient = Image.new("L", (width, int(height * 0.4)), color=0)
+for y in range(gradient.height):
+    gradient.putpixel((width // 2, y), int(255 * (y / gradient.height)))
 
-# Blend gradient with image
-overlayed = cv2.addWeighted(image, 1, gradient, 0.6, 0)
+# Apply gradient at the bottom
+gradient = gradient.resize((width, int(height * 0.4)))
+overlay = Image.new("RGBA", image.size, (0, 0, 0, 0))
+overlay.paste((0, 0, 0, 200), (0, height - gradient.height))
+image = Image.alpha_composite(image, overlay)
 
-# Convert to PIL for text rendering
-image_pil = Image.fromarray(overlayed)
-draw = ImageDraw.Draw(image_pil)
-
-# Load a bold font
-font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"  # Adjust as needed
-font = ImageFont.truetype(font_path, 60)  # Adjust font size
-
-# Define text
-text = "Samsung Galaxy S25 Ultra\nAI-Powered Performance"
-
-# Get text size and position
-text_w, text_h = draw.textsize(text, font=font)
-text_x = (w - text_w) // 2
-text_y = h - int(h * 0.3)  # Position text on gradient
+# Load font
+font = ImageFont.truetype("DejaVuSans-Bold.ttf", 40)
 
 # Add text
+draw = ImageDraw.Draw(image)
+text = "Samsung Galaxy S25 - Stunning Navy Blue!"
+bbox = draw.textbbox((0, 0), text, font=font)
+text_w, text_h = bbox[2] - bbox[0], bbox[3] - bbox[1]
+text_x = (width - text_w) // 2
+text_y = height - text_h - 20
+
 draw.text((text_x, text_y), text, font=font, fill="white")
 
-# Save processed image
-image_pil.save("processed.jpg")
+# Save result
+image.save("processed.jpg")
