@@ -1,96 +1,68 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samsung S25 Fact</title>
     <style>
-        /* General mobile optimization */
         body {
             margin: 0;
-            padding: 0;
             font-family: 'Poppins', sans-serif;
             background-color: #111;
             color: white;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .container {
-            position: relative;
-            width: 90vw; /* Ensures the container is not too wide */
-            max-width: 400px; /* Ensures the container does not grow too large */
-            height: 90vh; /* Adjusted height to ensure cropping */
-            overflow: hidden; /* Ensures anything outside the container is cropped */
             text-align: center;
         }
-
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            position: relative;
+        }
         .image-container {
             position: relative;
-            width: 100%;
-            height: 250px; /* Fixed height for the image */
+            border-radius: 15px 15px 0 0;
+            overflow: hidden;
         }
-
         .image-container img {
             width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensures image covers the space and crops it if necessary */
+            display: block;
+            opacity: 0.9;
         }
-
         .gradient-overlay {
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 50px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0) 100%);
+            height: 180px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.85) 25%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0) 100%);
         }
-
         .text-container {
-            margin-top: 10px;
-            padding: 0 10px; /* Adds some padding for smaller screens */
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            padding-bottom: 10px;
-            box-sizing: border-box; /* To include padding in the total width */
+            background: linear-gradient(to top, rgba(0,0,0,0.98), rgba(0,0,0,0));
+            padding: 30px;
+            border-radius: 0 0 15px 15px;
+            margin-top: -70px;
+            position: relative;
         }
-
         .title-box {
             display: inline-block;
             background: linear-gradient(135deg, #ff8c00, #ff4500);
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 12px 24px;
+            border-radius: 25px;
             font-weight: 900;
-            font-size: 18px; /* Reduced font size for better mobile readability */
+            font-size: 22px;
             color: white;
-            word-wrap: break-word;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 40px; /* Moved further down to align where the image and text meet */
+            left: 50%;
+            transform: translateX(-50%);
         }
-
         .fact-text {
-            margin-top: 10px;
-            font-size: 14px; /* Adjusted font size for mobile view */
-            font-weight: 700;
-            line-height: 1.4; /* Improves line spacing for readability */
-        }
-
-        /* Ensure that the image scales correctly in smaller screen widths */
-        @media only screen and (max-width: 600px) {
-            .title-box {
-                font-size: 16px; /* Smaller title font size on smaller screens */
-                padding: 8px 16px;
-            }
-
-            .fact-text {
-                font-size: 12px; /* Smaller font size for the fact text on smaller screens */
-            }
-
-            .container {
-                width: 95vw; /* Allows for some breathing room on very small screens */
-            }
+            margin-top: 80px;
+            font-size: 20px;
+            line-height: 1.6;
+            font-weight: 900;
+            text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.3);
         }
     </style>
 </head>
