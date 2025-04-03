@@ -1,4 +1,3 @@
-
 from PIL import Image, ImageDraw, ImageFont
 import requests
 from io import BytesIO
@@ -13,14 +12,12 @@ image = image.convert("RGBA")
 
 # Create gradient overlay
 width, height = image.size
-gradient = Image.new("L", (width, int(height * 0.4)), color=0)
-for y in range(gradient.height):
-    gradient.putpixel((width // 2, y), int(255 * (y / gradient.height)))
+gradient_height = int(height * 0.4)
+overlay = Image.new("RGBA", image.size, (0, 0, 0, 0))
+gradient = Image.new("RGBA", (width, gradient_height), (0, 0, 0, 200))
 
 # Apply gradient at the bottom
-gradient = gradient.resize((width, int(height * 0.4)))
-overlay = Image.new("RGBA", image.size, (0, 0, 0, 0))
-overlay.paste((0, 0, 0, 200), (0, height - gradient.height))
+overlay.paste(gradient, (0, height - gradient_height, width, height))
 image = Image.alpha_composite(image, overlay)
 
 # Load font
