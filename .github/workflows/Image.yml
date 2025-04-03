@@ -1,0 +1,33 @@
+name: Edit Samsung Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  edit-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+          npm install canvas axios
+
+      - name: Run image processing script
+        run: node edit-image.js
+
+      - name: Upload edited image
+        uses: actions/upload-artifact@v4
+        with:
+          name: edited-image
+          path: edited_image.png
